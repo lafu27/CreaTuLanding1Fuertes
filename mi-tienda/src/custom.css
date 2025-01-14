@@ -1,0 +1,21 @@
+/* custom.css */
+.hover-green:hover {
+    color: #a4dc34 !important;
+    background-color: #1a1a1a !important;
+  }
+  
+  .navbar .nav-link:hover {
+    color: #a4dc34 !important;
+  }
+  
+  .dropdown-menu {
+    border: 1px solid #a4dc34;
+  }
+  
+  .card {
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
