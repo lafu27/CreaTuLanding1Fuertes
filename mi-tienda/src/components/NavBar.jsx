@@ -1,19 +1,17 @@
-// NavBar.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import CartWidget from './CartWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#000000' }}>
       <div className="container">
         <a className="navbar-brand" href="/">
           <img 
-            src='../img/logo.png'
+            src="/img/logo.png"
             alt="PC Monster Components"
             className="d-inline-block align-text-top"
+            style={{ height: '50px' }}
           />
         </a>
 
@@ -66,7 +64,6 @@ const NavBar = () => {
             </li>
           </ul>
           
-          {/* Buscador */}
           <form className="d-flex me-3">
             <input 
               className="form-control me-2" 

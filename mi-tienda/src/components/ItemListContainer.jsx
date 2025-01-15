@@ -1,4 +1,3 @@
-// ItemListContainer.jsx
 import React from 'react';
 
 const ItemListContainer = ({ greeting }) => {
@@ -8,27 +7,24 @@ const ItemListContainer = ({ greeting }) => {
       nombre: "RTX 4080",
       categoria: "Tarjetas Gráficas",
       precio: 799999,
-      imagen: "/api/placeholder/200/200"
+      imagen: "/img/rtx4080.png"
     },
     {
       id: 2,
       nombre: "Ryzen 9 7950X",
       categoria: "Procesadores",
       precio: 549999,
-      imagen: "/api/placeholder/200/200"
-    },
-    //agregar mas productos
+      imagen: "/img/ryzen9.png"
+    }
   ];
 
   return (
     <div className="container mt-4">
-      {/* Banner principal */}
       <div className="p-5 text-center bg-dark text-light rounded mb-4">
         <h2 style={{ color: '#a4dc34' }}>{greeting}</h2>
         <p className="lead">Los mejores componentes para tu PC al mejor precio</p>
       </div>
 
-      {/* Grid de productos */}
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {productos.map(producto => (
           <div key={producto.id} className="col">
