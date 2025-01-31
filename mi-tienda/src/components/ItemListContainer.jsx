@@ -1,22 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getProductos } from '../services/api';
 
 const ItemListContainer = ({ greeting }) => {
-  const productos = [
-    {
-      id: 1,
-      nombre: "RTX 4080",
-      categoria: "Tarjetas Gráficas",
-      precio: 799999,
-      imagen: "/img/rtx4080.png"
-    },
-    {
-      id: 2,
-      nombre: "Ryzen 9 7950X",
-      categoria: "Procesadores",
-      precio: 549999,
-      imagen: "/img/ryzen9.png"
-    }
-  ];
+  const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProductos = async () => {
+      try {
+        setLoading(true);
+        const data = await getProductos();
+        setProductos(data);
+      } catch (error) {
+        setError('Error al cargar los productos');
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProductos();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="container mt-4 text-center">
+        <div className="spinner-border text-success" role="status">
+          <span className="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container mt-4">
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mt-4">
