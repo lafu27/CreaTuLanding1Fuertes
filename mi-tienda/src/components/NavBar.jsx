@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CartWidget from './CartWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -6,14 +7,14 @@ const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#000000' }}>
       <div className="container">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           <img 
             src="/img/logo.png"
             alt="PC Monster Components"
             className="d-inline-block align-text-top"
             style={{ height: '50px' }}
           />
-        </a>
+        </Link>
 
         <button 
           className="navbar-toggler"
@@ -30,7 +31,7 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link text-light" href="/">Inicio</a>
+              <Link className="nav-link text-light" to="/">Inicio</Link>
             </li>
             <li className="nav-item dropdown">
               <a 
@@ -44,23 +45,51 @@ const NavBar = () => {
                 Componentes
               </a>
               <ul className="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                <li><a className="dropdown-item text-light hover-green" href="/procesadores">Procesadores</a></li>
-                <li><a className="dropdown-item text-light hover-green" href="/tarjetas-graficas">Tarjetas Gráficas</a></li>
-                <li><a className="dropdown-item text-light hover-green" href="/memorias">Memorias RAM</a></li>
-                <li><a className="dropdown-item text-light hover-green" href="/placas-madre">Placas Madre</a></li>
-                <li><a className="dropdown-item text-light hover-green" href="/almacenamiento">Almacenamiento</a></li>
-                <li><a className="dropdown-item text-light hover-green" href="/fuentes">Fuentes de Poder</a></li>
-                <li><a className="dropdown-item text-light hover-green" href="/gabinetes">Gabinetes</a></li>
+                <li>
+                  <Link className="dropdown-item text-light hover-green" to="/categoria/procesadores">
+                    Procesadores
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item text-light hover-green" to="/categoria/tarjetas-graficas">
+                    Tarjetas Gráficas
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item text-light hover-green" to="/categoria/memorias">
+                    Memorias RAM
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item text-light hover-green" to="/categoria/placas-madre">
+                    Placas Madre
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item text-light hover-green" to="/categoria/almacenamiento">
+                    Almacenamiento
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item text-light hover-green" to="/categoria/fuentes">
+                    Fuentes de Poder
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item text-light hover-green" to="/categoria/gabinetes">
+                    Gabinetes
+                  </Link>
+                </li>
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-light" href="/arma-tu-pc">Arma tu PC</a>
+              <Link className="nav-link text-light" to="/arma-tu-pc">Arma tu PC</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-light" href="/ofertas">Ofertas</a>
+              <Link className="nav-link text-light" to="/ofertas">Ofertas</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-light" href="/soporte">Soporte</a>
+              <Link className="nav-link text-light" to="/soporte">Soporte</Link>
             </li>
           </ul>
           

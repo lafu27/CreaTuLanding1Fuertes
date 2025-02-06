@@ -1,32 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getProductos, getProductosByCategoria } from '../services/api';
-import ItemList from './ItemList';
+import { getProductoById } from '../services/api';
+import ItemDetail from './ItemDetail';
 
-const ItemListContainer = ({ greeting }) => {
-  const [productos, setProductos] = useState([]);
+const ItemDetailContainer = () => {
+  const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { categoriaId } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
-    const fetchProductos = async () => {
+    const fetchProducto = async () => {
       try {
         setLoading(true);
-        const data = categoriaId 
-          ? await getProductosByCategoria(categoriaId)
-          : await getProductos();
-        setProductos(data);
+        const data = await getProductoById(id);
+        setProducto(data);
       } catch (error) {
-        setError('Error al cargar los productos');
+        setError('Error al cargar el producto');
         console.error(error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchProductos();
-  }, [categoriaId]);
+    fetchProducto();
+  }, [id]);
 
   if (loading) {
     return (
@@ -50,13 +48,9 @@ const ItemListContainer = ({ greeting }) => {
 
   return (
     <div className="container mt-4">
-      <div className="p-5 text-center bg-dark text-light rounded mb-4">
-        <h2 style={{ color: '#a4dc34' }}>{greeting}</h2>
-        <p className="lead">Los mejores componentes para tu PC al mejor precio</p>
-      </div>
-      <ItemList productos={productos} />
+      <ItemDetail producto={producto} />
     </div>
   );
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;
